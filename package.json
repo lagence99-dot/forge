@@ -1,0 +1,43 @@
+{
+  "name": "forge-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FORGE™ — outil de pilotage de stratégie UX étape par étape",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,magenta \"node server/index.mjs\" \"vite\"",
+    "build": "tsc --noEmit && vite build",
+    "start": "NODE_ENV=production node server/index.mjs",
+    "typecheck": "tsc --noEmit",
+    "desktop": "npm run build && electron .",
+    "package:mac": "npm run build && node scripts/package-mac.mjs",
+    "build:artifact": "tsc --noEmit && vite build --mode artifact && node scripts/build-artifact.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.4.0",
+    "express": "4.22.3",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "concurrently": "9.2.5",
+    "electron": "45.2.2",
+    "fflate": "0.8.3",
+    "html-to-image": "1.11.13",
+    "jspdf": "4.2.1",
+    "lucide-react": "1.68.0",
+    "pdfjs-dist": "5.7.284",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "7.18.5",
+    "read-excel-file": "9.3.14",
+    "typescript": "5.9.3",
+    "vite": "6.4.5",
+    "zustand": "5.0.16"
+  },
+  "main": "electron/main.cjs",
+  "productName": "FORGE"
+}
